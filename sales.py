@@ -15,4 +15,6 @@ print(f'today is', today)
 
 df['OrderDate'] = pd.to_datetime(df['OrderDate'])
 df = df.sort_values(by=['OrderDate'])
-print(df)
+
+df_monthly = df[df['OrderDate'].dt.month == today.month]
+df_monthly.to_excel('monthly_rpt.xlsx', columns=cols, index = False, header = True)
